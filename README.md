@@ -1,92 +1,80 @@
-Game-Transaction-API
+# Game-Transaction-API
 
 This demo project showcases a simple RESTful API which has several endpoints that can be accessed and used to manipulate data within a provided database. 
 
-Built with Java and Spring using Hibernate (ORM for Spring), which supports CRUD operations.
+Built with Java, Spring and Hibernate (ORM for Spring), which supports CRUD operations.
 
-The project's main data objects/resources are items with specific attributes like name, amount, description user and transaction id. 
 
 ## Installation & Run
 
 ```
-# Download this project
+* Firstly navigate to (https://github.com/HamzaAli8/game-transactions-api)
 
-Firtslt navigate to github.com/HamzaAli8/game-transactions-api
+* Clone this repo to your local machine
 
-Clone this repo to your local machine
+* For simplicity in testing, this demo API utilises an in-memory H2 database to store transactions. This can easily 
+  be adjusted to use a production database of your liking for e.g. MySQL,Postgres, or RDS by simply making the relevant
+  changes to the application.properties file contained within src.
 
-For simplicity in testing this demo API, utilises an in-memory H2 database to store transactions, but can easily be adjusted to use a production database of your liking using MySQL, RDS, etc
+* Navigate to the project directory and execute ./mvnw spring-boot:run
 
-Navigate to the project directory and execute ./mvnw spring-boot:run
-
-Windows users can execute mvnw.cmd spring-boot:run
+* Windows users can execute mvnw.cmd spring-boot:run
 
 ```
 
 
-
-```go
-func GetConfig() *Config {
-	return &Config{
-		DB: &DBConfig{
-			Dialect:  "mysql",
-			Username: "guest",
-			Password: "Guest0000!",
-			Name:     "todoapp",
-			Charset:  "utf8",
-		},
-	}
-}
-```
-
-```bash
-# Build and Run
-cd go-todo-rest-api-example
-go build
-./go-todo-rest-api-example
-
-# API Endpoint : http://127.0.0.1:3000
-```
 
 ## Structure
 ```
-├── app
-│   ├── app.go
-│   ├── handler          // Our API core handlers
-│   │   ├── common.go    // Common response functions
-│   │   ├── projects.go  // APIs for Project model
-│   │   └── tasks.go     // APIs for Task model
+├── java
+│   ├── app
+│   ├── gametransactionapi   // Our API core handlers
+│   │   ├── controllers      // Common endpoints for API
+│   │   ├── services         // Services to manipulate DB
+│   │   └── repositories     // Repos to DB
 │   └── model
-│       └── model.go     // Models for our application
-├── config
-│   └── config.go        // Configuration
-└── main.go
+│       └── transaction      // Models for our application
+├── resources
+│   └── application.properties  // Configuration
+└── main
 ```
 
 ## API
 
-#### /projects
-* `GET` : Get all projects
-* `POST` : Create a new project
+#### /transactions
+* `GET` : Get all transactions
+* `POST` : Create a new transaction
 
-#### /projects/:title
-* `GET` : Get a project
-* `PUT` : Update a project
-* `DELETE` : Delete a project
+You can then get all transations with a GET to /transactions.
+This endpoint offers two options query parameters - less and greater to filter by amount.
 
-#### /projects/:title/archive
-* `PUT` : Archive a project
-* `DELETE` : Restore a project 
+You can POST Transactions using the following JSON structure:
 
-#### /projects/:title/tasks
-* `GET` : Get all tasks of a project
-* `POST` : Create a new task in a project
+```
+{
+    "product":{
+        "name": "Sega Megadrive",
+        "description":"greatest console ever!!"
+        },
+    "userId": 89,
+    "amount": 1000
+}
+```
 
-#### /projects/:title/tasks/:id
-* `GET` : Get a task of a project
-* `PUT` : Update a task of a project
-* `DELETE` : Delete a task of a project
+Which will return the newly created resource and it's location:
 
-#### /projects/:title/tasks/:id/complete
-* `PUT` : Complete a task of a project
-* `DELETE` : Undo a task of a project
+```
+{
+    "transactionId": 1,
+    "product": {
+        "productId": 1,
+        "name": "Sega Megadrive",
+        "description": "greatest console ever!!"
+    },
+    "userId": 89,
+    "amount": 1000
+}
+
+```
+
+#### More information on all the endpoints are available and can be found within the controller class.
