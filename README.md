@@ -1,15 +1,30 @@
-# Java-Spring Game-Transaction-API
-A RESTful API example for simple todo application with Go
+Game-Transaction-API
 
-It is a just simple tutorial or example for making simple RESTful API with Go using **gorilla/mux** (A nice mux library) and **gorm** (An ORM for Go)
+This demo project showcases a simple RESTful API which has several endpoints that can be accessed and used to manipulate data within a provided database. 
+
+Built with Java and Spring using Hibernate (ORM for Spring), which supports CRUD operations.
+
+The project's main data objects/resources are items with specific attributes like name, amount, description user and transaction id. 
 
 ## Installation & Run
-```bash
+
+```
 # Download this project
-go get github.com/mingrammer/go-todo-rest-api-example
+
+Firtslt navigate to github.com/HamzaAli8/game-transactions-api
+
+Clone this repo to your local machine
+
+For simplicity in testing this demo API, utilises an in-memory H2 database to store transactions, but can easily be adjusted to use a production database of your liking using MySQL, RDS, etc
+
+Navigate to the project directory and execute ./mvnw spring-boot:run
+
+Windows users can execute mvnw.cmd spring-boot:run
+
 ```
 
-Before running API server, you should set the database config with yours or set the your database config with my values on [config.go](https://github.com/mingrammer/go-todo-rest-api-example/blob/master/config/config.go)
+
+
 ```go
 func GetConfig() *Config {
 	return &Config{
