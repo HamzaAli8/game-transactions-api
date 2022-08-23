@@ -2,7 +2,7 @@
 
 This demo project showcases a simple RESTful API which has several endpoints that can be accessed and used to manipulate data within a provided database. 
 
-Built with Java, Spring and Hibernate (ORM for Spring), which supports CRUD operations.
+Built with Java, Spring and Hibernate (ORM for Spring). It supports simple CRUD operations. 
 
 
 ## Installation & Run
@@ -16,13 +16,14 @@ Built with Java, Spring and Hibernate (ORM for Spring), which supports CRUD oper
   be adjusted to use a production database of your liking for e.g. MySQL,Postgres, or RDS by simply making the relevant
   changes to the application.properties file contained within src.
 
-* Navigate to the project directory and execute ./mvnw spring-boot:run
-
-* Windows users can execute mvnw.cmd spring-boot:run
+* Use your CLI and navigate to the project directory and execute ./mvnw spring-boot:run (macOS/Linux). 
+  This should have your application up and running.
+  
+* For Windows users follow the steps above but execute mvnw.cmd spring-boot:run in your CLI. 
+ 
+* You can use a simple API platform like Postman to test the endpoints. 
 
 ```
-
-
 
 ## Structure
 ```
